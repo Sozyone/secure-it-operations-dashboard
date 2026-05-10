@@ -1,58 +1,57 @@
 # Runbook
-
 This runbook explains basic checks for the Secure IT Operations Dashboard.
 
-## Start the app
-
+## Start the app with Python
 Go to the project folder:
-
 cd ~/secure-it-operations-dashboard
 
 Activate the Python virtual environment:
-
 source venv/bin/activate
 
 Start the Flask app:
-
 python app.py
 
+## Start the app with Docker
+Go to the project folder:
+cd ~/secure-it-operations-dashboard
+
+Build the Docker image:
+docker build -t secure-it-dashboard .
+
+Run the container:
+docker run -p 5000:5000 secure-it-dashboard
+
 ## Stop the app
-
-Press:
-
+If the app is running in the terminal, press:
 Ctrl + C
 
 ## Check if the app answers locally
-
 Open another SSH terminal and run:
-
 curl http://localhost:5000
-
 If the app is running, HTML output should be shown in the terminal.
 
+## Check the health endpoint
+curl http://localhost:5000/health
+Expected result:
+{"status":"healthy"}
+
 ## Common problem: Flask is not installed
-
 If this error appears:
-
 ModuleNotFoundError: No module named 'flask'
-
 Activate the virtual environment and install the requirements:
-
 source venv/bin/activate
 pip install -r requirements.txt
 
 ## Common problem: port 5000 is already in use
-
-If port 5000 is busy, another app process may already be running.
-
+If port 5000 is busy, another app or container may already be running.
 Check running Python processes:
-
 ps aux | grep python
-
-Stop the old process if needed.
+Check running Docker containers:
+docker ps
+Stop a running container if needed:
+docker stop CONTAINER_ID
 
 ## Current limitation
-
-The app currently runs only as a local development server.
-
-Later, the project will use Docker, Nginx, and other tools for a more realistic deployment.
+The app currently runs locally in the Ubuntu Server VM.
+It can run directly with Python or inside Docker, but it is not exposed to the public internet.
+Later, the project will use more realistic deployment tools such as Nginx, Ansible, monitoring, and Kubernetes.

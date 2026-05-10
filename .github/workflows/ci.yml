@@ -30,3 +30,11 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t secure-it-dashboard .
+
+      - name: Run Trivy image scan
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: secure-it-dashboard
+          format: table
+          severity: HIGH,CRITICAL
+          exit-code: "0"

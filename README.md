@@ -57,6 +57,9 @@ curl http://localhost:5000
 Check the health endpoint:
 curl http://localhost:5000/health
 
+Check the metrics endpoint:
+curl http://localhost:5000/metrics
+
 ## Long-term goal
 The long-term goal is to turn this into a small but realistic DevSecOps portfolio project.
 It will include deployment, automation, security scanning, monitoring, and documentation.

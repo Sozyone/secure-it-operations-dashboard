@@ -21,23 +21,17 @@ docker build -t secure-it-dashboard .
 Run the container:
 docker run -p 5000:5000 secure-it-dashboard
 
-## Stop the app
-If the app is running in the terminal, press:
-Ctrl + C
-
 ## Check if the app answers locally
 Open another SSH terminal and run:
 curl http://localhost:5000
-If the app is running, HTML output should be shown in the terminal.
 
 ## Check the health endpoint
 curl http://localhost:5000/health
-Expected result:
-{"status":"healthy"}
 
 ## Check Docker container health
 
 When the app is running in Docker, check container status:
 docker ps
-If the health check is working, the STATUS column should show: healthy
-The Docker health check uses the /health endpoint inside the container.
+
+## Check the metrics endpoint
+curl http://localhost:5000/metrics

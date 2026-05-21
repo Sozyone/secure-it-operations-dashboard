@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string, jsonify
+from flask import Flask, render_template_string, jsonify, Response
 
 app = Flask(__name__)
 
@@ -60,6 +60,27 @@ def home():
 @app.route("/health")
 def health():
     return jsonify({"status": "healthy"})
+
+@app.route("/metrics")
+def metrics():
+    total_systems = len(systems)
+    ok_systems = sum(1 for system in systems if system["status"] == "OK")
+    warning_systems = sum(1 for system in systems if system["status"] == "Warning")
+
+    metrics_text = f"""# HELP dashboard_systems_total Total number of systems in the dashboard
+# TYPE dashboard_systems_total gauge
+dashboard_systems_total {total_systems}
+
+# HELP dashboard_systems_ok Number of systems with OK status
+# TYPE dashboard_systems_ok gauge
+dashboard_systems_ok {ok_systems}
+
+# HELP dashboard_systems_warning Number of systems with Warning status
+# TYPE dashboard_systems_warning gauge
+dashboard_systems_warning {warning_systems}
+"""
+
+    return Response(metrics_text, mimetype="text/plain")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

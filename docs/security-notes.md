@@ -2,11 +2,6 @@
 
 This document explains the basic security choices in the Secure IT Operations Dashboard project.
 
-## Local lab only
-
-The app currently runs only inside a local Ubuntu Server VM.
-This is safer while the project is still in the learning phase.
-
 ## SSH access
 
 SSH is used to connect from Windows PowerShell to the Ubuntu Server VM.
@@ -23,17 +18,11 @@ This helps avoid exposing a personal email address in public commits.
 A .dockerignore file is used to keep unnecessary files out of Docker build.
 This helps avoid copying local files, virtual environments, Git history, logs, editor files, and secrets into Docker image.
 
-## Dependencies
-
-Python dependencies are stored in requirements.txt.
-This makes it easier to see what packages the project needs.
-
 ## Gitleaks secret scan
 
 Gitleaks was added to the CI pipeline to scan the repository for secrets.
 The purpose is to detect sensitive information like passwords, API keys, tokens,
 private keys, and other secrets before they become a security problem.
-The project should not contain real secrets or private information.
 The CI pipeline runs Gitleaks automatically on each push and pull request.
 
 ## Trivy image scan result
@@ -49,11 +38,21 @@ After rebuilding and scanning again, Trivy reported 0 vulnerabilities.
 This shows why container image scanning is useful.
 Even a simple app can have vulnerabilities because of the base image.
 
+## Basic Linux hardening
+
+Ansible is used to apply basic Linux hardening on the Ubuntu Server VM.
+The playbook installs and enables:
+
+- ufw firewall
+- fail2ban
+
+The firewall is enabled and OpenSSH is allowed so SSH access still works.
+fail2ban is enabled and running. It helps protect the server from failed login tries.
+This is a basic first hardening step and will be improved later.
+
 ## Future security improvements
 
 Later the project will include:
-
-- Basic Linux hardening
 - Better deployment setup
 - Monitoring and logging
 - Stricter CI rules for security findings

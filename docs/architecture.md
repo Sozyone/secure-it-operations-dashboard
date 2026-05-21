@@ -88,6 +88,7 @@ The app is not exposed to the public internet. This is safer while the project i
 - GitHub Actions CI pipeline
 - Gitleaks secret scanning
 - Trivy image vulnerability scanning
+- Docker health check using the /health endpoint
 - Documentation and runbook
 
 ## Planned improvements

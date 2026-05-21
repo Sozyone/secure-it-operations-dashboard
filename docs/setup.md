@@ -322,6 +322,53 @@ Run the playbook:
 ```bash
 sudo ansible-playbook -i ansible/inventory.ini ansible/playbook.yml
 ```
+## Basic Linux hardening with Ansible
+
+The Ansible playbook can also apply basic Linux hardening.
+The playbook installs:
+
+`ufw` is used as a simple firewall.
+`fail2ban` helps protect the server from repeated failed login attempts.
+
+The playbook allows OpenSSH before enabling the firewall:
+
+```bash
+ufw allow OpenSSH
+```
+
+This is important because SSH access must keep working after the firewall is enabled.
+The playbook enables the firewall:
+
+```bash
+ufw --force enable
+```
+
+The playbook also starts and enables fail2ban:
+
+```yaml
+service:
+  name: fail2ban
+  state: started
+  enabled: true
+```
+
+Run the playbook:
+
+```bash
+sudo ansible-playbook -i ansible/inventory.ini ansible/playbook.yml
+```
+
+Check firewall status:
+
+```bash
+sudo ufw status
+```
+
+Check fail2ban status:
+
+```bash
+sudo systemctl status fail2ban
+```
 
 ## 13. Useful Git commands
 
@@ -360,7 +407,6 @@ See commit history:
 ```bash
 git log --oneline
 ```
-
 ## 14. Suggested documentation files
 
 Suggested `docs` folder:

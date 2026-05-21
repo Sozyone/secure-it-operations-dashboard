@@ -35,23 +35,9 @@ curl http://localhost:5000/health
 Expected result:
 {"status":"healthy"}
 
-## Common problem: Flask is not installed
-If this error appears:
-ModuleNotFoundError: No module named 'flask'
-Activate the virtual environment and install the requirements:
-source venv/bin/activate
-pip install -r requirements.txt
+## Check Docker container health
 
-## Common problem: port 5000 is already in use
-If port 5000 is busy, another app or container may already be running.
-Check running Python processes:
-ps aux | grep python
-Check running Docker containers:
+When the app is running in Docker, check container status:
 docker ps
-Stop a running container if needed:
-docker stop CONTAINER_ID
-
-## Current limitation
-The app currently runs locally in the Ubuntu Server VM.
-It can run directly with Python or inside Docker, but it is not exposed to the public internet.
-Later, the project will use more realistic deployment tools such as Nginx, Ansible, monitoring, and Kubernetes.
+If the health check is working, the STATUS column should show: healthy
+The Docker health check uses the /health endpoint inside the container.

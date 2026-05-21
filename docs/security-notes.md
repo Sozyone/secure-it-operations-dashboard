@@ -5,13 +5,7 @@ This document explains the basic security choices in the Secure IT Operations Da
 ## Local lab only
 
 The app currently runs only inside a local Ubuntu Server VM.
-It is not exposed to the public internet.
 This is safer while the project is still in the learning phase.
-
-## No real data
-
-The dashboard uses fake example systems and fake status information.
-No real customer data, passwords, tokens, private keys, or sensitive information should be stored in this project.
 
 ## SSH access
 
@@ -23,6 +17,11 @@ The private SSH key must stay inside the VM and should never be shared.
 
 Git is configured to use a GitHub noreply email.
 This helps avoid exposing a personal email address in public commits.
+
+## Docker ignore file
+
+A .dockerignore file is used to keep unnecessary files out of Docker build.
+This helps avoid copying local files, virtual environments, Git history, logs, editor files, and secrets into Docker image.
 
 ## Dependencies
 

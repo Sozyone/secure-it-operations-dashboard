@@ -189,12 +189,6 @@ Test the app in another SSH terminal:
 curl http://localhost:5000
 ```
 
-Stop the app:
-
-```text
-Ctrl + C
-```
-
 ## 8. Docker installation
 
 Install required packages:
@@ -289,12 +283,6 @@ Test the health endpoint:
 curl http://localhost:5000/health
 ```
 
-Stop the running container:
-
-```text
-Ctrl + C
-```
-
 ## 10. GitHub Actions CI
 
 Create the workflow folder:
@@ -312,7 +300,6 @@ nano .github/workflows/ci.yml
 ## 11. Security scanning
 
 Gitleaks checks the repository for exposed secrets.
-
 Trivy checks the Docker image for vulnerabilities.
 
 ## 12. Ansible setup

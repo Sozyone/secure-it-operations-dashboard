@@ -1,0 +1,36 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.venv/
+.env/
+
+# Environment and secrets
+.env
+*.env
+secrets/
+*.key
+*.pem
+
+# Logs
+*.log
+logs/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Documentation not needed inside image
+docs/
+README.md
+LICENSE

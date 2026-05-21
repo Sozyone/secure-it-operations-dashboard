@@ -315,7 +315,28 @@ Gitleaks checks the repository for exposed secrets.
 
 Trivy checks the Docker image for vulnerabilities.
 
-## 12. Useful Git commands
+## 12. Ansible setup
+
+Install Ansible:
+
+```bash
+sudo apt install ansible
+```
+
+Create Ansible folder and files:
+
+```bash
+mkdir ansible
+nano ansible/inventory.ini
+nano ansible/playbook.yml
+```
+Run the playbook:
+
+```bash
+sudo ansible-playbook -i ansible/inventory.ini ansible/playbook.yml
+```
+
+## 13. Useful Git commands
 
 Check changed files:
 
@@ -353,7 +374,7 @@ See commit history:
 git log --oneline
 ```
 
-## 13. Suggested documentation files
+## 14. Suggested documentation files
 
 Suggested `docs` folder:
 

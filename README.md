@@ -25,6 +25,7 @@ It also has a health endpoint at /health. The app can run with Python or inside 
 - Alpine based Python image to reduce vulnerabilities
 - Ansible playbook for basic server setup
 - Ansible syntax check in Github Actions
+- Docker health check using the /health endpoint
 - Architecture documentation
 - Runbook documentation
 - Security notes documentation

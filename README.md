@@ -10,7 +10,7 @@ The goal is to build a small IT operations dashboard and use it to practice:
 - Docker
 - GitHub Actions
 - Security scanning
-- Ansible later
+- Ansible
 - Kubernetes later
 
 ## Current status
@@ -23,6 +23,8 @@ It also has a health endpoint at /health. The app can run with Python or inside 
 - Gitleaks secret scanning
 - Trivy Docker image vulnerability scanning
 - Alpine based Python image to reduce vulnerabilities
+- Ansible playbook for basic server setup
+- Ansible syntax check in Github Actions
 - Architecture documentation
 - Runbook documentation
 - Security notes documentation

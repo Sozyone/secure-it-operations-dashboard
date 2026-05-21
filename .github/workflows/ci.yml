@@ -27,6 +27,12 @@ jobs:
 
       - name: Check Flask import
         run: python -c "import flask; print('Flask import successful')"
+      
+      - name: Install Ansible
+        run: pip install ansible
+
+      - name: Check Ansible playbook syntax
+        run: ansible-playbook -i ansible/inventory.ini ansible/playbook.yml --syntax-check
 
       - name: Build Docker image
         run: docker build -t secure-it-dashboard .
